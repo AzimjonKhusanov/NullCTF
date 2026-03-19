@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Edit Challenge</h1>
+
+<form method="POST">
+
+<input class="form-control mb-2"
+name="name"
+value="{{challenge.name}}">
+
+<textarea class="form-control mb-2"
+name="description">{{challenge.description}}</textarea>
+
+<input class="form-control mb-2"
+name="flag"
+value="{{challenge.flag}}">
+
+<input class="form-control mb-2"
+name="points"
+value="{{challenge.points}}">
+
+<select class="form-control mb-2" name="category">
+
+<option value="web">Web</option>
+<option value="crypto">Crypto</option>
+<option value="forensic">Forensic</option>
+<option value="pwn">Pwn</option>
+
+</select>
+
+<button class="btn btn-success">Update</button>
+
+</form>
+
+{% endblock %}

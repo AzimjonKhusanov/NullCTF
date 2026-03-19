@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-4">
+
+<a href="/dashboard" class="btn btn-secondary">All</a>
+
+<a href="/dashboard?category=web" class="btn btn-primary">Web</a>
+
+<a href="/dashboard?category=crypto" class="btn btn-warning">Crypto</a>
+
+<a href="/dashboard?category=forensic" class="btn btn-info">Forensic</a>
+
+<a href="/dashboard?category=pwn" class="btn btn-danger">Pwn</a>
+
+</div>
+<h1 class="mb-4">Challenges</h1>
+
+<div class="row">
+
+{% for c in challenges %}
+
+<div class="col-md-4">
+
+<div class="card mb-4
+{% if c.id in solved_ids %}
+bg-success text-light
+{% else %}
+bg-dark text-light border-light
+{% endif %}
+">
+
+<div class="card-body">
+
+<h5 class="card-title">{{c.name}}</h5>
+
+<p class="card-text">
+{{c.description}}
+</p>
+
+<p class="text-info">
+👤 Solved: {{c.solves}}
+</p>
+
+<form method="POST" action="/submit_flag">
+
+<input type="hidden" name="challenge_id" value="{{c.id}}">
+
+<input class="form-control mb-2" name="flag" placeholder="Enter flag">
+
+<button class="btn btn-warning w-100">Submit</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

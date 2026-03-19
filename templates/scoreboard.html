@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Scoreboard</h1>
+
+<table class="table table-dark table-striped">
+
+<tr>
+<th>Rank</th>
+<th>User</th>
+<th>Score</th>
+</tr>
+
+{% for u in users %}
+
+<tr>
+<td>{{loop.index}}</td>
+<td>{{u.username}}</td>
+<td>{{u.score}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
